@@ -22,10 +22,10 @@ def produtos(id):
 def add():
     return render_template('add.html')
 
-@app.route('/store', methods=['POST', 'GET'])
+@app.route('/store', methods=['post'])
 def store():
     nome = request.form['nome']
-    val = request.form['val']
+    val = float(request.form['val'])
     produto.append([nome, val])
     
     return redirect('/')
