@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+        * {
+        margin: 0px;
+        padding: 0px;}
+        
+  body {
+     display: flex;
+     min-height: 100vh;
+     justify-content: space-evenly;
+     align-items: center;}
+     
+.produto{
+      width: 150px;
+      height: 170px;
+      text-align: center;
+      background-color: #ddd;
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 20px;}
+      
+.red {
+      background-color: red;
+      color: white;
+      display: inline;}
+      
+.add-btn {
+      position: absolute;
+      top: 30px;
+      right: 30px;}
+</style>
+</head>
+<body>
+    <a class="add-btn" href="/add">
+        <button>Adicionar produto</button>
+    </a>
+    <table class="w3-table-all">
+        
+       <tr>
+          <td>Nome</td>
+           <td>Preço</td>
+       </tr>
+       
+      {% for nome, val in produto %}
+           
+         <tr>   
+            <td>
+                <a href="/prod/{{loop.index0}}">
+                  {{ nome }}
+                </a>
+                    </td>
+                
+      {% if val < 5 %}
+         <td> R${{ val }} </td>
+               {% else %}
+         <td class="red">R${{ val }}</td>
+                
+      {% endif %}
+        </tr>
+      {%endfor%}
+</table>
+</body>
+</html>
